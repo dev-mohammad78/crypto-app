@@ -1,9 +1,7 @@
+import HomePage from "./components/templates/HomePage";
+
 function App() {
-  return (
-    <>
-      <h3>Welcome to Vite!</h3>
-    </>
-  );
+  return <HomePage />;
 }
 
 export default App;
