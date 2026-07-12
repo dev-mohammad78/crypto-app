@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  /* Background */
+  --bg-primary: oklch(20.8% 0.042 265.755);
+  --bg-secondary: oklch(27.9% 0.041 260.031);
+
+  /* Text */
+  --text-primary: oklch(98.7% 0.002 197.1);
+  --text-secondary: oklch(87.2% 0.007 219.6);
+
+  /* Primary */
+  --primary: oklch(62.3% 0.214 259.815);
+  --primary-hover: oklch(70% 0.25 259.815);
+
+  /* Danger */
+  --danger-primary: oklch(63.7% 0.237 25.331);
+
+  /* Success */
+  --success: oklch(72.3% 0.219 149.579);
+
+  /* Fonts */
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+#root {
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
