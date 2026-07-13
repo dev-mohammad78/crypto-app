@@ -4,17 +4,18 @@
   /* Background */
   --bg-primary: oklch(20.8% 0.042 265.755);
   --bg-secondary: oklch(27.9% 0.041 260.031);
+  --color-tertiary: oklch(26.8% 0.016 264.3);
 
   /* Text */
   --text-primary: oklch(98.7% 0.002 197.1);
-  --text-secondary: oklch(87.2% 0.007 219.6);
+  --text-secondary: oklch(72.252% 0.00549 229.431);
 
   /* Primary */
   --primary: oklch(62.3% 0.214 259.815);
   --primary-hover: oklch(70% 0.25 259.815);
 
   /* Danger */
-  --danger-primary: oklch(63.7% 0.237 25.331);
+  --danger: oklch(63.7% 0.237 25.331);
 
   /* Success */
   --success: oklch(72.3% 0.219 149.579);

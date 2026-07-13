@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import TableCoins from "../modules/TableCoins";
 import { getCoinList } from "../../services/cryptoApi";
+import TableCoinsMobile from "../modules/TableCoinsMobile";
 
 function HomePage() {
   const [coins, setCoins] = useState([]);
@@ -19,7 +20,12 @@ function HomePage() {
 
   return (
     <div>
-      <TableCoins coins={coins} isLoading={isLoading} />
+      <div className="hidden sm:block">
+        <TableCoins coins={coins} isLoading={isLoading} />
+      </div>
+      <div className="block sm:hidden">
+        <TableCoinsMobile coins={coins} isLoading={isLoading} />
+      </div>
     </div>
   );
 }
