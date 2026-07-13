@@ -1,12 +1,13 @@
 import chartUp from "../../assets/chart-up.svg";
 import chartDown from "../../assets/chart-down.svg";
+import Loader from "../../styles/Loader";
 
 function TableCoins({ coins, isLoading }) {
   console.log(coins);
   return (
     <div>
       {isLoading ? (
-        <p>Loading..</p>
+        <Loader />
       ) : (
         <table>
           <thead>
