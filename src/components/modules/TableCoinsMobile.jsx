@@ -7,7 +7,7 @@ function MobileCoins({ coins, isLoading }) {
   if (isLoading) return <Loader />;
 
   return (
-    <div className="mt-[50px] mb-[100px] space-y-4 md:hidden px-2">
+    <div className="mt-[50px] mb-[50px] space-y-4 md:hidden px-2">
       {coins.map((coin) => (
         <MobileCoinCard key={coin.id} coin={coin} />
       ))}

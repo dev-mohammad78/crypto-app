@@ -13,6 +13,7 @@
   /* Primary */
   --primary: oklch(62.3% 0.214 259.815);
   --primary-hover: oklch(70% 0.25 259.815);
+  --primary-disabled: oklch(49.121% 0.14283 258.812);
 
   /* Danger */
   --danger: oklch(63.7% 0.237 25.331);
@@ -51,4 +52,12 @@
 
 body {
   margin: 0;
+}
+
+
+.btn{
+  background-color: var(--primary);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }
