@@ -3,7 +3,6 @@ import chartDown from "../../assets/chart-down.svg";
 import Loader from "../../styles/Loader";
 
 function TableCoins({ coins, isLoading, currency }) {
-  console.log(coins);
   return (
     <div className="flex justify-center mt-[50px] mb-[100px]">
       {isLoading ? (

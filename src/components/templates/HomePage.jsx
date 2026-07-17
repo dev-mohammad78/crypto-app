@@ -15,10 +15,14 @@ function HomePage() {
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
-      const response = await fetch(getCoinList(page, currency));
-      const data = await response.json();
-      setCoins(data);
-      setIsLoading(false);
+      try {
+        const response = await fetch(getCoinList(page, currency));
+        const data = await response.json();
+        setCoins(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
     };
     getData();
   }, [page, currency]);
@@ -30,7 +34,11 @@ function HomePage() {
         <TableCoins coins={coins} isLoading={isLoading} currency={currency} />
       </div>
       <div className="block sm:hidden">
-        <TableCoinsMobile coins={coins} isLoading={isLoading} currency={currency} />
+        <TableCoinsMobile
+          coins={coins}
+          isLoading={isLoading}
+          currency={currency}
+        />
       </div>
       <Pagination page={page} setPage={setPage} />
     </div>
