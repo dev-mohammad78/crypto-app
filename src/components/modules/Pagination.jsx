@@ -6,7 +6,7 @@ function Pagination({ page, setPage }) {
     setPage((page) => page - 1);
   };
   const nextHandler = () => {
-    if (page >= 10) return;
+    if (page >= 6) return;
     setPage((page) => page + 1);
   };
 
@@ -21,20 +21,19 @@ function Pagination({ page, setPage }) {
 
       <p className={`${page === 1 ? "btn" : "inherit"}`}>1</p>
       <p className={`${page === 2 ? "btn" : "inherit"}`}>2</p>
-      <p className={`${page === 3 ? "btn" : "inherit"}`}>3</p>
 
-      {page >= 4 && page <= 9 && (
+      {page >= 3 && page <= 5 && (
         <>
           <span>...</span>
           <p className="btn">{page}</p>
         </>
       )}
       <span>...</span>
-      <p className={`${page === 10 ? "btn" : "inherit"}`}>10</p>
+      <p className={`${page === 6 ? "btn" : "inherit"}`}>6</p>
 
       <button
         onClick={nextHandler}
-        className={`${page === 10 ? "bg-[var(--primary-disabled)]" : null} text-[var(--text-primary)] p-3 rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300 cursor-pointer`}
+        className={`${page === 6 ? "bg-[var(--primary-disabled)]" : null} text-[var(--text-primary)] p-3 rounded-md hover:bg-[var(--primary-hover)] transition-colors duration-300 cursor-pointer`}
       >
         <SlArrowRight />
       </button>
