@@ -3,13 +3,13 @@ import chartDown from "../../assets/chart-down.svg";
 
 import Loader from "../../styles/Loader";
 
-function MobileCoins({ coins, isLoading }) {
+function MobileCoins({ coins, isLoading, currency }) {
   if (isLoading) return <Loader />;
 
   return (
     <div className="mt-[50px] mb-[50px] space-y-4 md:hidden px-2">
       {coins.map((coin) => (
-        <MobileCoinCard key={coin.id} coin={coin} />
+        <MobileCoinCard key={coin.id} coin={coin} currency={currency} />
       ))}
     </div>
   );
@@ -26,11 +26,10 @@ function MobileCoinCard({
     total_volume,
     price_change_percentage_24h: price_change,
   },
+  currency,
 }) {
-
   return (
     <div className="rounded-xl bg-[var(--bg-secondary)] p-4 shadow-md">
-
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer">
@@ -50,7 +49,8 @@ function MobileCoinCard({
           <p className="text-xs text-[var(--text-secondary)]">Price</p>
 
           <span className="font-semibold">
-            ${current_price.toLocaleString()}
+            {currency === "usd" ? "$" : currency === "eur" ? "€" : "¥"}
+            {current_price.toLocaleString()}
           </span>
         </div>
 
@@ -72,7 +72,8 @@ function MobileCoinCard({
           <p className="text-xs text-[var(--text-secondary)]">Total Volume</p>
 
           <span className="font-semibold">
-            ${total_volume.toLocaleString()}
+            {currency === "usd" ? "$" : currency === "eur" ? "€" : "¥"}
+            {total_volume.toLocaleString()}
           </span>
         </div>
       </div>
