@@ -11,7 +11,7 @@ function Pagination({ page, setPage }) {
   };
 
   return (
-    <div className="w-[350px] md:w-[600px] flex items-center justify-between mx-auto mb-20">
+    <div className="w-[calc(100%-30px)] md:w-[600px] flex items-center justify-between mx-auto mb-20">
       <button
         onClick={previousHandler}
         className={`${page === 1 ? "bg-[var(--primary-disabled)]" : null} text-[var(--text-primary)] p-3 rounded-md  cursor-pointer`}
