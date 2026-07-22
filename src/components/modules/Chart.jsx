@@ -1,4 +1,10 @@
+import { useState } from "react";
+import { convertData } from "../../helper/convertData";
+
 function Chart({ chart, setChart }) {
+  const [type, setType] = useState("market_caps");
+
+  console.log(convertData(chart, type));
   return (
     <div className="w-full h-full fixed top-4 left-4 backdrop-blur-xs">
       <span

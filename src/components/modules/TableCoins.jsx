@@ -56,7 +56,6 @@ const TableRow = ({
     try {
       const response = await fetch(marketChart(id));
       const data = await response.json();
-      console.log(data);
       setChart(data);
     } catch (error) {
       setChart(null);
