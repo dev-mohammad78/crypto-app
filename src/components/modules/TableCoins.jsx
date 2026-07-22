@@ -1,6 +1,7 @@
 import chartUp from "../../assets/chart-up.svg";
 import chartDown from "../../assets/chart-down.svg";
 import Loader from "../../styles/Loader";
+import { marketChart } from "../../services/cryptoApi";
 
 function TableCoins({ coins, isLoading, currency, setChart }) {
   return (
@@ -39,6 +40,7 @@ export default TableCoins;
 
 const TableRow = ({
   coin: {
+    id,
     image,
     name,
     symbol,
@@ -49,8 +51,16 @@ const TableRow = ({
   currency,
   setChart,
 }) => {
-  const showHandler = () => {
-    setChart(true);
+  
+  const showHandler = async () => {
+    try {
+      const response = await fetch(marketChart(id));
+      const data = await response.json();
+      console.log(data);
+      setChart(data);
+    } catch (error) {
+      setChart(null);
+    }
   };
   return (
     <tr className="h-18 border-b-1 border-b-[var(--color-tertiary)] font-md font-semibold">
