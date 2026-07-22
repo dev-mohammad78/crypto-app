@@ -2,7 +2,7 @@ import chartUp from "../../assets/chart-up.svg";
 import chartDown from "../../assets/chart-down.svg";
 import Loader from "../../styles/Loader";
 
-function TableCoins({ coins, isLoading, currency }) {
+function TableCoins({ coins, isLoading, currency, setChart }) {
   return (
     <div className="flex justify-center mt-[50px] mb-[100px]">
       {isLoading ? (
@@ -21,7 +21,12 @@ function TableCoins({ coins, isLoading, currency }) {
 
           <tbody>
             {coins.map((coin) => (
-              <TableRow key={coin.id} coin={coin} currency={currency} />
+              <TableRow
+                key={coin.id}
+                coin={coin}
+                currency={currency}
+                setChart={setChart}
+              />
             ))}
           </tbody>
         </table>
@@ -42,11 +47,15 @@ const TableRow = ({
     price_change_percentage_24h: price_change,
   },
   currency,
+  setChart,
 }) => {
+  const showHandler = () => {
+    setChart(true);
+  };
   return (
     <tr className="h-18 border-b-1 border-b-[var(--color-tertiary)] font-md font-semibold">
       <td className="p-3">
-        <div className="flex items-center cursor-pointer ">
+        <div className="flex items-center cursor-pointer" onClick={showHandler}>
           <img src={image} alt={name} className="w-[25px] h-[25px] mr-3" />
           <span>{name}</span>
           <span className="ml-2 text-sm font-normal text-[var(--text-secondary)]">
