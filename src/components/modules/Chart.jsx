@@ -13,8 +13,15 @@ import { convertData } from "../../helper/convertData";
 
 function Chart({ chart, setChart }) {
   const [type, setType] = useState("prices");
+  console.log(chart);
 
-  console.log(convertData(chart, type));
+  const typeHandler = (event) => {
+    if (event.target.tagName === "BUTTON") {
+      const type = event.target.innerText.toLowerCase().replace(" ", "_");
+      setType(type);
+    }
+  };
+
   return (
     <div className="w-full h-full fixed top-4 left-4 backdrop-blur-xs">
       <span
@@ -23,7 +30,19 @@ function Chart({ chart, setChart }) {
       >
         X
       </span>
-      <div className="w-[800px] m-auto p-5 mt-20 bg-[var(--bg-primary)] border-2 border-[var(--bg-secondary)] shadow-xl/20 rounded-lg">
+
+      <div className="w-[800px] m-auto p-5 mt-10 bg-[var(--bg-primary)] border-2 border-[var(--bg-secondary)] shadow-xl/20 rounded-lg">
+        {/* header */}
+        <div className="flex items-center ml-3 mb-4">
+          <img
+            src={chart.coin.image}
+            alt={chart.coin.name}
+            className="w-10 h-10"
+          />
+          <p className="ml-2 font-bold">{chart.coin.name}</p>
+        </div>
+
+        {/* chart */}
         <div className="w-[740px] h-[300px] p-2">
           <LineChart
             style={{
@@ -50,6 +69,63 @@ function Chart({ chart, setChart }) {
             <Legend />
             <Tooltip />
           </LineChart>
+        </div>
+
+        {/* details */}
+        <div className="flex items-center gap-x-8 mt-5" onClick={typeHandler}>
+          <button
+            className={`${
+              type === "prices"
+                ? "bg-[var(--primary)] text-[var(--text-primary)] py-[6px] px-[4px] rounded-md"
+                : "market__btn"
+            }`}
+          >
+            Prices
+          </button>
+          <button
+            className={`${
+              type === "market_caps"
+                ? "bg-[var(--primary)] text-[var(--text-primary)] py-[6px] px-[4px] rounded-md"
+                : "market__btn"
+            }`}
+          >
+            Market Caps
+          </button>
+          <button
+            className={`${
+              type === "total_volumes"
+                ? "bg-[var(--primary)] text-[var(--text-primary)] py-[6px] px-[4px] rounded-md"
+                : "market__btn"
+            }`}
+          >
+            Total Volumes
+          </button>
+        </div>
+
+        {/* footer */}
+        <div className="flex items-center justify-between mt-8">
+          <div className="flex">
+            <p className="text-[var(--primary)] text-sm font-bold mr-2">
+              Prices:
+            </p>
+            <span className="text-[var(--text-primary)] text-sm ">
+              ${chart.coin.current_price}
+            </span>
+          </div>
+          <div className="flex">
+            <p className="text-[var(--primary)] text-sm font-bold mr-2">ATH:</p>
+            <span className="text-[var(--text-primary)] text-sm ">
+              ${chart.coin.ath}
+            </span>
+          </div>
+          <div className="flex">
+            <p className="text-[var(--primary)] text-sm font-bold mr-2">
+              Market Cap:
+            </p>
+            <span className="text-[var(--text-primary)] text-sm ">
+              {chart.coin.market_cap}
+            </span>
+          </div>
         </div>
       </div>
     </div>
