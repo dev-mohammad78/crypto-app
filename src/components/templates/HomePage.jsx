@@ -45,6 +45,7 @@ function HomePage() {
           coins={coins}
           isLoading={isLoading}
           currency={currency}
+          setChart={setChart}
         />
       </div>
       <Pagination page={page} setPage={setPage} />

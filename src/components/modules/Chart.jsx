@@ -23,7 +23,7 @@ function Chart({ chart, setChart }) {
   };
 
   return (
-    <div className="w-full h-full fixed top-4 left-4 backdrop-blur-xs">
+    <div className="w-full h-full fixed top-4 left-1 sm:left-4 backdrop-blur-xs">
       <span
         className="inline-block font-bold bg-[var(--danger)] text-[var(--text-primary)] w-8 h-8 leading-8 text-center mt-2 ml-2 rounded-sm cursor-pointer"
         onClick={() => setChart(false)}
@@ -31,23 +31,23 @@ function Chart({ chart, setChart }) {
         X
       </span>
 
-      <div className="w-[800px] m-auto p-5 mt-10 bg-[var(--bg-primary)] border-2 border-[var(--bg-secondary)] shadow-xl/20 rounded-lg">
+      <div className="w-[380px] sm:w-[800px] sm:m-auto p-5 mt-6 sm:mt-10 bg-[var(--bg-primary)] border-2 border-[var(--bg-secondary)] shadow-xl/20 rounded-lg">
         {/* header */}
         <div className="flex items-center ml-3 mb-4">
           <img
             src={chart.coin.image}
             alt={chart.coin.name}
-            className="w-10 h-10"
+            className="w-8 h-8 sm:w-10 sm:h-10"
           />
           <p className="ml-2 font-bold">{chart.coin.name}</p>
         </div>
 
         {/* chart */}
-        <div className="w-[740px] h-[300px] p-2">
+        <div className="w-[360px] sm:w-[740px] h-[300px] sm:mt-2 sm:p-2">
           <LineChart
             style={{
-              width: "100%",
-              height: "100%",
+              width: "95%",
+              height: "85%",
             }}
             responsive
             data={convertData(chart, type)}
@@ -72,7 +72,7 @@ function Chart({ chart, setChart }) {
         </div>
 
         {/* details */}
-        <div className="flex items-center gap-x-8 mt-5" onClick={typeHandler}>
+        <div className="flex items-center gap-x-8 mt-0" onClick={typeHandler}>
           <button
             className={`${
               type === "prices"
@@ -103,7 +103,7 @@ function Chart({ chart, setChart }) {
         </div>
 
         {/* footer */}
-        <div className="flex items-center justify-between mt-8">
+        <div className="flex flex-col sm:flex-row  sm:items-center justify-between mt-8">
           <div className="flex">
             <p className="text-[var(--primary)] text-sm font-bold mr-2">
               Prices:

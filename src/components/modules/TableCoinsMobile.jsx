@@ -2,14 +2,20 @@ import chartUp from "../../assets/chart-up.svg";
 import chartDown from "../../assets/chart-down.svg";
 
 import Loader from "../../styles/Loader";
+import { marketChart } from "../../services/cryptoApi";
 
-function MobileCoins({ coins, isLoading, currency }) {
+function MobileCoins({ coins, isLoading, currency, setChart }) {
   if (isLoading) return <Loader />;
 
   return (
     <div className="mt-[30px] mb-[50px] space-y-4 md:hidden px-2">
       {coins.map((coin) => (
-        <MobileCoinCard key={coin.id} coin={coin} currency={currency} />
+        <MobileCoinCard
+          key={coin.id}
+          coin={coin}
+          currency={currency}
+          setChart={setChart}
+        />
       ))}
     </div>
   );
@@ -17,19 +23,32 @@ function MobileCoins({ coins, isLoading, currency }) {
 
 export default MobileCoins;
 
-function MobileCoinCard({
-  coin: {
+function MobileCoinCard({ coin, currency, setChart }) {
+  const {
+    id,
     image,
     name,
     symbol,
     current_price,
     total_volume,
     price_change_percentage_24h: price_change,
-  },
-  currency,
-}) {
+  } = coin;
+
+  const showHandler = async () => {
+    try {
+      const response = await fetch(marketChart(id));
+      const data = await response.json();
+      setChart({ ...data, coin });
+    } catch (error) {
+      setChart(null);
+    }
+  };
+
   return (
-    <div className="rounded-xl bg-[var(--bg-secondary)] p-4 shadow-md">
+    <div
+      className="rounded-xl bg-[var(--bg-secondary)] p-4 shadow-md"
+      onClick={showHandler}
+    >
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer">
